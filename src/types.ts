@@ -1,6 +1,6 @@
-import { Book, Person } from "./interfaces";
+import { Book, Person } from './interfaces';
 
-//export type Book = {
+// export type Book = {
 //     id: number;
 //     title: string;
 //     author: string;

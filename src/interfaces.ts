@@ -42,4 +42,4 @@ export {
     Person,
     TOptions,
     DamageLogger as Logger
-}
+};

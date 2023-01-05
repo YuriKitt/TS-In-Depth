@@ -1,9 +1,9 @@
-import { UL, ReferenceItem, RefBook } from "./classes";
-import { Category } from "./enums";
-import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig } from "./functions";
-import { Book, Logger, Author, Librarian, TOptions } from "./interfaces";
-import { PersonBook } from "./types";
-import type { Library } from "./classes/library";
+import { UL, ReferenceItem, RefBook } from './classes';
+import { Category } from './enums';
+import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig } from './functions';
+import { Book, Logger, Author, Librarian, TOptions } from './interfaces';
+import { PersonBook } from './types';
+import type { Library } from './classes/library';
 // import RefBook from './classes/encyclopedia';
 
 showHello('greeting', 'TypeScript');
@@ -13,8 +13,8 @@ function showHello(divName: string, name: string) {
     elt.innerText = `Hello from ${name}`;
 }
 
-//==============================
-//====================================
+// ==============================
+// ====================================
 // Task 02.01
 
 // console.log(getAllbooks());
@@ -23,7 +23,7 @@ function showHello(divName: string, name: string) {
 // console.log(getBookAuthorByIndex(0));
 // calcTotalPages();
 
-//====================================
+// ====================================
 // Task 03.01
 
 // let myID: string = createCustomerID('Ann', 10);
@@ -34,7 +34,7 @@ function showHello(divName: string, name: string) {
 // idGenerator = createCustomerID;
 // console.log('idGenerator :>> ', idGenerator('Brom', 23));
 
-//====================================
+// ====================================
 // Task 03.02
 
 // createCustomer('Ann');
@@ -47,19 +47,19 @@ function showHello(divName: string, name: string) {
 // let myBooks: string[] = сheckoutBooks('Ann', 1, 2, 4)
 // console.log('myBooks :>> ', myBooks);
 
-//====================================
+// ====================================
 // Task 03.03
 
 // let checkedOutBooks: string[] = getTitles(false);
 // console.log('checkedOutBooks :>> ', checkedOutBooks);
 
-//====================================
+// ====================================
 // Task 03.04
 
 // console.log(bookTitleTransform('123'));
 // console.log(bookTitleTransform(123));
 
-//====================================
+// ====================================
 // Task 04.01
 
 // let myBook: Book = {
@@ -79,13 +79,13 @@ function showHello(divName: string, name: string) {
 
 // myBook.markDamaged('missing back cover');
 
-//====================================
+// ====================================
 // Task 04.02
 
 // let logDamage: Logger = (reason: string) => console.log(`Damaged: ${reason}`);
 // logDamage('missing back cover');
 
-//====================================
+// ====================================
 // Task 04.03
 
 // const favoriteAuthor: Author = {
@@ -101,7 +101,7 @@ function showHello(divName: string, name: string) {
 //     assistCustomer: null
 // }
 
-//====================================
+// ====================================
 // Task 04.04
 
 // const offer: any = {
@@ -115,14 +115,14 @@ function showHello(divName: string, name: string) {
 // console.log('offer.book.getTitle() :>> ', offer.book.getTitle?.());
 // console.log('offer.book.authors[0]  object :>> ', offer.book.authors?.[0]);
 
-//====================================
+// ====================================
 // Task 04.05
 
 // console.log(getProperty(myBook, 'title'));
 // console.log(getProperty(myBook, 'markDamaged'));
 // console.log(getProperty(myBook, 'isbn'));
 
-//====================================
+// ====================================
 // Task 05.01
 
 // const ref = new ReferenceItem(1, 'Learn TypeScript', 2022);
@@ -132,27 +132,27 @@ function showHello(divName: string, name: string) {
 // console.log(ref.publisher);
 // console.log(ref.getID());
 
-//====================================
+// ====================================
 // Task 05.02
 
 // const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
 // refBook.printItem();
 // console.log(refBook);
 
-//====================================
+// ====================================
 // Task 05.03
 
 // const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
 // refBook.printCitation();
 
-//====================================
+// ====================================
 // Task 05.04
 
 // const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 // favoriteLibrarian.name = 'Anna';
 // favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
 
-//====================================
+// ====================================
 // Task 05.05
 
 // const personBook: PersonBook = {
@@ -172,19 +172,19 @@ function showHello(divName: string, name: string) {
 // console.log('option1 :>> ', option1);
 // console.log(Object.is(option, option1));
 
-//====================================
+// ====================================
 // Task 06.03
 
 // const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
 // printRefBook(refBook);
 
-//====================================
+// ====================================
 // Task 06.04
 
 // const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 // printRefBook(favoriteLibrarian);
 
-//====================================
+// ====================================
 // Task 06.05
 // const flag = true;
 
@@ -211,7 +211,7 @@ function showHello(divName: string, name: string) {
 //     console.log(reader);
 // }
 
-//====================================
+// ====================================
 // Task 06.06
 
 // let library: Library = new Library();

@@ -1,8 +1,8 @@
 /* eslint-disable no-redeclare */
 
-import { Category } from "./enums";
-import { Book, TOptions } from "./interfaces";
-import { BookOrUndefined, BookProperties } from "./types";
+import { Category } from './enums';
+import { Book, TOptions } from './interfaces';
+import { BookOrUndefined, BookProperties } from './types';
 import RefBook from './classes/encyclopedia';
 
 export function getAllbooks(): readonly Book[] {
@@ -53,17 +53,21 @@ export function calcTotalPages(): void {
 }
 
 export function createCustomerID(name: string, id: number): string {
-    return "".concat(name, "-", id.toString())
+    return ''.concat(name, '-', id.toString());
 }
 
 export function createCustomer(name: string, age?: number, city?: string): void {
     console.log(`Customer name: ${name}`);
-    if (age) { console.log(`Customer age: ${age}`); }
-    if (city) { console.log(`Customer age: ${city}`); }
+    if (age) {
+        console.log(`Customer age: ${age}`);
+    }
+    if (city) {
+        console.log(`Customer age: ${city}`);
+    }
 }
 
 export function getBookByID(findId: Book['id']): BookOrUndefined {
-    return getAllbooks().find(({ id }) => id === findId)
+    return getAllbooks().find(({ id }) => id === findId);
 }
 
 export function сheckoutBooks(customer: string, ...bookIDs: number[]): string[] {
@@ -81,18 +85,18 @@ export function getTitles(id: number, available: boolean): string[];
 export function getTitles(...args: [string | boolean] | [number, boolean]) {
     let foundTitles: string[];
     if (typeof args[0] === 'string') {
-        foundTitles = getAllbooks().filter(({ author }) => author === args[0]).map(({ title }) => title)
+        foundTitles = getAllbooks().filter(({ author }) => author === args[0]).map(({ title }) => title);
     } else if (typeof args[0] === 'boolean') {
-        foundTitles = getAllbooks().filter(({ available }) => available === args[0]).map(({ title }) => title)
+        foundTitles = getAllbooks().filter(({ available }) => available === args[0]).map(({ title }) => title);
     } else if (typeof args[0] === 'number') {
-        foundTitles = getAllbooks().filter(({ id, available }) => id === args[0] && available === args[1]).map(({ title }) => title)
+        foundTitles = getAllbooks().filter(({ id, available }) => id === args[0] && available === args[1]).map(({ title }) => title);
     }
     return foundTitles;
 }
 
 export function assertStringValue(data: any): asserts data is string {
     if (typeof data !== 'string') {
-        throw new Error('value should have been a string')
+        throw new Error('value should have been a string');
     }
 }
 
@@ -104,7 +108,7 @@ export function assertRefBookInstance(condition: any): asserts condition {
 
 export function bookTitleTransform(title: any): string {
     assertStringValue(title);
-    return [...title].reverse().join('')
+    return [...title].reverse().join('');
 }
 
 export function printBook(book: Book): void {
