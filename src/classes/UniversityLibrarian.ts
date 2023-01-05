@@ -1,4 +1,4 @@
-import * as Interfaces from "../interfaces";
+import * as Interfaces from '../interfaces';
 
 export class UniversityLibrarian implements Interfaces.Librarian {
     name: string;

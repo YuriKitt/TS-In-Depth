@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 export abstract class ReferenceItem {
     // title: string;
     // year: number;

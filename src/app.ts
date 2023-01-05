@@ -1,9 +1,9 @@
 import { UL, ReferenceItem, RefBook } from './classes';
 import { Category } from './enums';
-import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig } from './functions';
+import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig, purge } from './functions';
 import { Book, Logger, Author, Librarian, TOptions } from './interfaces';
 import { PersonBook } from './types';
-import type { Library } from './classes/library';
+import { Library } from './classes/library';
 // import RefBook from './classes/encyclopedia';
 
 showHello('greeting', 'TypeScript');
@@ -30,7 +30,7 @@ function showHello(divName: string, name: string) {
 // console.log('myID :>> ', myID);
 // let idGenerator: (name: string, id: number) => string;
 // let idGenerator: typeof createCustomerID;
-// idGenerator = (name, id) => "".concat(name, "-", id.toString());
+// idGenerator = (name, id) => ''.concat(name, '-', id.toString());
 // idGenerator = createCustomerID;
 // console.log('idGenerator :>> ', idGenerator('Brom', 23));
 
@@ -92,14 +92,14 @@ function showHello(divName: string, name: string) {
 //     name: 'Anna',
 //     email: 'anna@example.com',
 //     numBooksPublished: 2
-// }
+// };
 
 // const favoriteLibrarian: Librarian = {
 //     name: 'Boris',
 //     email: 'boris@example.com',
 //     department: 'Classical Literature',
 //     assistCustomer: null
-// }
+// };
 
 // ====================================
 // Task 04.04
@@ -163,7 +163,7 @@ function showHello(divName: string, name: string) {
 //     email: 'anna@example.com',
 //     id: 1,
 //     title: 'Unknown'
-// }
+// };
 
 // const option: TOptions = { duration: 20 };
 // const option1: TOptions = setDefaultConfig(option);
@@ -173,19 +173,19 @@ function showHello(divName: string, name: string) {
 // console.log(Object.is(option, option1));
 
 // ====================================
-// Task 06.03
+// Task 06.03. Default Export
 
 // const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
 // printRefBook(refBook);
 
 // ====================================
-// Task 06.04
+// Task 06.04. Re-Export
 
 // const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 // printRefBook(favoriteLibrarian);
 
 // ====================================
-// Task 06.05
+// Task 06.05. Dynamic Import Expression
 // const flag = true;
 
 // if (flag) {
@@ -212,12 +212,31 @@ function showHello(divName: string, name: string) {
 // }
 
 // ====================================
-// Task 06.06
+// Task 06.06. Type-Only Imports and Exports
 
 // let library: Library = new Library();
 // let library: Library = {
 //     Id: 1,
 //     name: 'Ann',
 //     address: ''
-// }
+// };
 // console.log(library);
+
+// ====================================
+// Task 07.01. Generic Functions
+
+// let inventory: Book[] = [
+//     { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+//     { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+//     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+//     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+// ];
+
+// const result = purge(inventory);
+// console.log(result);
+
+// console.log(purge([1,2,3,4,5]));
+
+// ====================================
+// Task 07.02. Generic Interfaces and Classes
+
