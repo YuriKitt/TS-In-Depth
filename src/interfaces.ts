@@ -40,8 +40,16 @@ interface Magazine {
     publisher: string;
 }
 
-interface ShelfItem{
+interface ShelfItem {
     title: string;
+}
+
+interface LibMgrCallback {
+    (err: Error | null, titles: string[] | null): void;
+}
+
+interface Callback<T> {
+    (err: Error | null, data: T | null): void;
 }
 
 export {
@@ -52,5 +60,7 @@ export {
     TOptions,
     DamageLogger as Logger,
     Magazine,
-    ShelfItem
+    ShelfItem,
+    LibMgrCallback,
+    Callback,
 };

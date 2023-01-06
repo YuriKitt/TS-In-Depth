@@ -1,16 +1,34 @@
 /* eslint-disable no-redeclare */
 
 import { Category } from './enums';
-import { Book, TOptions } from './interfaces';
+import { Book, Callback, LibMgrCallback, TOptions } from './interfaces';
 import { BookOrUndefined, BookProperties } from './types';
 import RefBook from './classes/encyclopedia';
 
 export function getAllbooks(): readonly Book[] {
     const books = <const>[
-        { id: 1, title: 'Refactoring JavaScript', category: Category.JavaScript, author: 'Evan Burchard', available: true },
-        { id: 2, title: 'JavaScript Testing', category: Category.JavaScript, author: 'Liang Yuxian Eugene', available: false },
+        {
+            id: 1,
+            title: 'Refactoring JavaScript',
+            category: Category.JavaScript,
+            author: 'Evan Burchard',
+            available: true,
+        },
+        {
+            id: 2,
+            title: 'JavaScript Testing',
+            category: Category.JavaScript,
+            author: 'Liang Yuxian Eugene',
+            available: false,
+        },
         { id: 3, title: 'CSS Secrets', category: Category.CSS, author: 'Lea Verou', available: false },
-        { id: 4, title: 'Mastering JavaScript Object-Oriented Programming', category: Category.JavaScript, author: 'Andrea Chiarelli', available: true }
+        {
+            id: 4,
+            title: 'Mastering JavaScript Object-Oriented Programming',
+            category: Category.JavaScript,
+            author: 'Andrea Chiarelli',
+            available: true,
+        },
     ];
 
     return books;
@@ -25,9 +43,7 @@ export function logFirstAvailable(books: readonly Book[] = getAllbooks()): void 
 
 export function getBookTitlesByCategory(inputCategory: Category = Category.JavaScript): string[] {
     const books = getAllbooks();
-    return books
-        .filter(({ category }) => category === inputCategory)
-        .map(({ title }) => title);
+    return books.filter(({ category }) => category === inputCategory).map(({ title }) => title);
 }
 
 export function logBookTitles(titles: string[]): void {
@@ -44,7 +60,7 @@ export function calcTotalPages(): void {
     const data = <const>[
         { lib: 'libName1', books: 1_000_000_000, avgPagesPerBook: 250 },
         { lib: 'libName2', books: 5_000_000_000, avgPagesPerBook: 300 },
-        { lib: 'libName3', books: 3_000_000_000, avgPagesPerBook: 280 }
+        { lib: 'libName3', books: 3_000_000_000, avgPagesPerBook: 280 },
     ];
     const r = data.reduce((acc: bigint, obj) => {
         return acc + BigInt(obj.books) * BigInt(obj.avgPagesPerBook);
@@ -76,7 +92,6 @@ export function сheckoutBooks(customer: string, ...bookIDs: number[]): string[]
         .map(id => getBookByID(id))
         .filter(({ available }) => available)
         .map(({ title }) => title);
-
 }
 
 export function getTitles(author: string): string[];
@@ -85,11 +100,17 @@ export function getTitles(id: number, available: boolean): string[];
 export function getTitles(...args: [string | boolean] | [number, boolean]) {
     let foundTitles: string[];
     if (typeof args[0] === 'string') {
-        foundTitles = getAllbooks().filter(({ author }) => author === args[0]).map(({ title }) => title);
+        foundTitles = getAllbooks()
+            .filter(({ author }) => author === args[0])
+            .map(({ title }) => title);
     } else if (typeof args[0] === 'boolean') {
-        foundTitles = getAllbooks().filter(({ available }) => available === args[0]).map(({ title }) => title);
+        foundTitles = getAllbooks()
+            .filter(({ available }) => available === args[0])
+            .map(({ title }) => title);
     } else if (typeof args[0] === 'number') {
-        foundTitles = getAllbooks().filter(({ id, available }) => id === args[0] && available === args[1]).map(({ title }) => title);
+        foundTitles = getAllbooks()
+            .filter(({ id, available }) => id === args[0] && available === args[1])
+            .map(({ title }) => title);
     }
     return foundTitles;
 }
@@ -118,10 +139,12 @@ export function printBook(book: Book): void {
 export function getProperty(book: Book, prop: BookProperties): any {
     const value = book[prop];
     return typeof value === 'function' ? value.name : value;
-
 }
 
-export function getObjectProperty<TObject,TKey extends keyof TObject>(obj: TObject, prop: TKey): TObject[TKey]| string{
+export function getObjectProperty<TObject, TKey extends keyof TObject>(
+    obj: TObject,
+    prop: TKey,
+): TObject[TKey] | string {
     const value = obj[prop];
     return typeof value === 'function' ? value.name : value;
 }
@@ -137,6 +160,49 @@ export function printRefBook(data: any): void {
     data.printItem();
 }
 
-export function purge<T>(inventory: Array<T>): Array<T>{
+export function purge<T>(inventory: Array<T>): Array<T> {
     return inventory.slice(2);
+}
+
+// export function getBooksByCategory(category: Category, callback: LibMgrCallback): void {
+export function getBooksByCategory(category: Category, callback: Callback<string[]>): void {
+    setTimeout(() => {
+        try {
+            const titles = getBookTitlesByCategory(category);
+            if (titles.length > 0) {
+                callback(null, titles);
+            } else {
+                throw new Error('No books found.');
+            }
+        } catch (error) {
+            callback(error, null);
+        }
+    }, 2000);
+}
+
+export function logCategorySearch(err: Error | null, titles: string[] | null): void {
+    if (err) {
+        console.log(err.message);
+    } else {
+        console.log(titles);
+    }
+}
+
+export function getBooksByCategoryPromise(category: Category): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const titles = getBookTitlesByCategory(category);
+            if (titles.length > 0) {
+                resolve(titles);
+            } else {
+                reject('No books found');
+            }
+        }, 2000);
+    });
+}
+
+export async function logSearchResults(category: Category) {
+    const titles = await getBooksByCategoryPromise(category);
+    console.log(titles.length);
+    return titles;
 }

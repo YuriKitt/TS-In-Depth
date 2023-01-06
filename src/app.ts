@@ -14,6 +14,10 @@ import {
     purge,
     getObjectProperty,
     createCustomer,
+    getBooksByCategory,
+    logCategorySearch,
+    getBooksByCategoryPromise,
+    logSearchResults,
 } from './functions';
 import { Book, Logger, Author, Librarian, TOptions, Magazine } from './interfaces';
 import { BookRequiredFields, PersonBook, UpdatedBook, СreateCustomerFunctionType } from './types';
@@ -355,3 +359,37 @@ function showHello(divName: string, name: string) {
 // refBook.copies = -10;
 // refBook.copies = 1.5;
 // console.log(refBook.copies);
+
+// ====================================
+// Task 09.01. Callback Functions
+// console.log('Begin');
+// getBooksByCategory(Category.JavaScript, logCategorySearch);
+// getBooksByCategory(Category.Software, logCategorySearch);
+// console.log('End');
+
+// ====================================
+// Task 09.02. Promises
+
+// console.log('Begin');
+// getBooksByCategoryPromise(Category.JavaScript)
+//     .then(titles => {
+//         console.log('then 1.0:', titles);
+//         return Promise.resolve(titles.length);
+//     })
+//     .then(n => console.log('then 1.1:', n))
+//     .catch(reason => console.log('catch 1:', reason));
+// console.log('End');
+
+// console.log('Begin');
+// getBooksByCategoryPromise(Category.Software)
+//     .then(titles => console.log('then 2:', titles))
+//     .catch(reason => console.log('catch 2:', reason));
+// console.log('End');
+
+// ====================================
+// Task 09.03. Async Functions
+
+// console.log('Begin');
+// logSearchResults(Category.JavaScript);
+// logSearchResults(Category.Software).catch(err => console.log(err));
+// console.log('End');
