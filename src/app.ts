@@ -1,6 +1,20 @@
 import { UL, ReferenceItem, RefBook, Shelf } from './classes';
 import { Category } from './enums';
-import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig, purge, getObjectProperty, createCustomer } from './functions';
+import {
+    printRefBook,
+    calcTotalPages,
+    createCustomerID,
+    getAllbooks,
+    getBookAuthorByIndex,
+    getBookTitlesByCategory,
+    getProperty,
+    logBookTitles,
+    logFirstAvailable,
+    setDefaultConfig,
+    purge,
+    getObjectProperty,
+    createCustomer,
+} from './functions';
 import { Book, Logger, Author, Librarian, TOptions, Magazine } from './interfaces';
 import { BookRequiredFields, PersonBook, UpdatedBook, СreateCustomerFunctionType } from './types';
 import { Library } from './classes/library';
@@ -201,7 +215,6 @@ function showHello(divName: string, name: string) {
 //         .finally(() => console.log('complete'));
 // }
 
-
 // if (flag) {
 //     const o = await import('./classes');
 //     const reader = new o.Reader();
@@ -225,12 +238,12 @@ function showHello(divName: string, name: string) {
 // ====================================
 // Task 07.01. Generic Functions
 
-const inventory: Book[] = [
-    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
-    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
-    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
-    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
-];
+// const inventory: Book[] = [
+//     { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+//     { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+//     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+//     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+// ];
 
 // const result = purge(inventory);
 // console.log(result);
@@ -263,7 +276,6 @@ const inventory: Book[] = [
 // console.log (getObjectProperty(magazines[0],'title'));
 // console.log (getObjectProperty<Book,'author'|'title'>(inventory[1],'author'));
 
-
 // ====================================
 // Task 07.04. Utility Types
 
@@ -285,3 +297,61 @@ const inventory: Book[] = [
 // let params: Parameters<СreateCustomerFunctionType>;
 // params = ['Anna',30,'Kyiv'];
 // createCustomer(...params);
+
+// ====================================
+// Task 08.01. Class Decorators (sealed)
+
+// const favoriteLibrarian1 = new UL.UniversityLibrarian();
+// const favoriteLibrarian2 = new UL.UniversityLibrarian();
+
+// favoriteLibrarian1['a'] = 1;
+// UL.UniversityLibrarian['a'] = 2;
+// UL.UniversityLibrarian.prototype['a'] = 3;
+
+// ====================================
+// Task 08.02. Class Decorators that replace constructor functions (logger)
+
+// const fLibrarian = new UL.UniversityLibrarian();
+// console.log(fLibrarian);
+// fLibrarian.name = 'Anna';
+// fLibrarian['printLibrarian']();
+
+// ====================================
+// Task 08.03. Method Decorator (writable)
+
+// const fLibrarian = new UL.UniversityLibrarian();
+// console.log(fLibrarian);
+// fLibrarian.assistFaculty = null;
+// fLibrarian.teachCommunity = null;
+
+// ====================================
+// Task 08.04. Method Decorator (timeout)
+
+// const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
+// refBook.printItem();
+
+// ====================================
+// Task 08.05. Parameter Decorator (logParameter)
+
+// const fLibrarian = new UL.UniversityLibrarian();
+// console.log(fLibrarian);
+// fLibrarian.name ='Anna';
+// fLibrarian.assistCustomer('Boris','Learn TypeScript');
+
+// ====================================
+// Task 08.06. Property Decorator
+
+// const fLibrarian = new UL.UniversityLibrarian();
+// fLibrarian.name = 'Anna';
+// console.log(fLibrarian.name);
+// fLibrarian.assistCustomer('Boris', 'Learn TypeScript');
+// console.log(fLibrarian);
+
+// ====================================
+// Task 08.07. Accessor Decorator
+
+// const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
+// refBook.copies = 10;
+// refBook.copies = -10;
+// refBook.copies = 1.5;
+// console.log(refBook.copies);
