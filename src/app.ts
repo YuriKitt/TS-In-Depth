@@ -1,8 +1,8 @@
-import { UL, ReferenceItem, RefBook } from './classes';
+import { UL, ReferenceItem, RefBook, Shelf } from './classes';
 import { Category } from './enums';
-import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig, purge } from './functions';
-import { Book, Logger, Author, Librarian, TOptions } from './interfaces';
-import { PersonBook } from './types';
+import { printRefBook, calcTotalPages, createCustomerID, getAllbooks, getBookAuthorByIndex, getBookTitlesByCategory, getProperty, logBookTitles, logFirstAvailable, setDefaultConfig, purge, getObjectProperty, createCustomer } from './functions';
+import { Book, Logger, Author, Librarian, TOptions, Magazine } from './interfaces';
+import { BookRequiredFields, PersonBook, UpdatedBook, СreateCustomerFunctionType } from './types';
 import { Library } from './classes/library';
 // import RefBook from './classes/encyclopedia';
 
@@ -225,12 +225,12 @@ function showHello(divName: string, name: string) {
 // ====================================
 // Task 07.01. Generic Functions
 
-// let inventory: Book[] = [
-//     { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
-//     { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
-//     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
-//     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
-// ];
+const inventory: Book[] = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+];
 
 // const result = purge(inventory);
 // console.log(result);
@@ -239,4 +239,49 @@ function showHello(divName: string, name: string) {
 
 // ====================================
 // Task 07.02. Generic Interfaces and Classes
+// Task 07.03. Generic Constraints
 
+// const bookShelf: Shelf<Book> = new Shelf<Book>();
+// const bookShelf = new Shelf<Book>();
+
+// inventory.forEach(book => bookShelf.add(book));
+// console.log(bookShelf.getFitst().title);
+
+// const magazines: Magazine[] = [
+//     { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+//     { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+//     { title: 'Five Points', publisher: 'GSU' }
+// ];
+
+// const magazineShelf = new Shelf<Magazine>();
+// magazines.forEach(mag=> magazineShelf.add(mag));
+// console.log(magazineShelf.getFitst().title);
+
+// magazineShelf.printTitles();
+// console.log(magazineShelf.find('Five Points'));
+
+// console.log (getObjectProperty(magazines[0],'title'));
+// console.log (getObjectProperty<Book,'author'|'title'>(inventory[1],'author'));
+
+
+// ====================================
+// Task 07.04. Utility Types
+
+// const bookRequiredFields: BookRequiredFields = {
+//     author: 'Anna',
+//     available: false,
+//     category: Category.Angular,
+//     id: 1,
+//     markDamaged: null,
+//     pages: 200,
+//     title: 'Learn Angular'
+// };
+
+// const updatedBook: UpdatedBook = {
+//     id: 23,
+//     pages: 300
+// };
+
+// let params: Parameters<СreateCustomerFunctionType>;
+// params = ['Anna',30,'Kyiv'];
+// createCustomer(...params);
